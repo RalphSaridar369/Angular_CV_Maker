@@ -1,0 +1,17 @@
+.auth-body {
+    background: linear-gradient(to right, white, 70%, #2f7ae5);
+    height: 100vh;
+
+    div.auth-line {
+        background-color: red !important;
+        height: 10px;
+        color: wheat;
+    }
+
+    .auth-content-container {
+        justify-self: flex-end;
+        flex: 1;
+        width: 50%;
+        height: 100vh;
+    }
+}

@@ -1,0 +1,39 @@
+@use "../auth.component.scss" as *;
+
+.login-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 400px;
+    gap: 20px;
+
+    .login-body-input {
+        background-color: white;
+        border-radius: 10px;
+        border-color: transparent;
+        padding: 10px 10px;
+        width: 100%;
+    }
+
+    .oauth-button {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background-color: white;
+        border-radius: 10px;
+        width: 100%;
+        padding: 10px 10px;
+    }
+
+    .oauth-button:hover {
+        cursor: pointer;
+    }
+
+    .login-body-card {
+        background-color: white;
+        border-radius: 40px;
+        padding: 40px 200px;
+    }
+}
