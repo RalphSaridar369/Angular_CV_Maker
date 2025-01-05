@@ -3,12 +3,21 @@
     <input class="login-body-input" type='email' placeholder="email" />
     <input class="login-body-input" type="password" placeholder="password" />
 
-    <div class="auth-line"></div>
-    <div>Or</div>
-    <div class="auth-line">h</div>
+    <button class="btn">Login</button>
+    <a routerLink="/auth/reset-password">
+        Forgot password ? reset here
+    </a>
+    <div class="auth-line-container">
+        <div class="auth-line"></div>
+        <div>Or</div>
+        <div class="auth-line"></div>
+    </div>
 
     <div class="oauth-button" (click)="login()">
-        <img src="../../../../assets/google.png" width="100px" height="100px" />
-        <p>Login With Google</p>
+        <img src="/google.png" width="40px" height="40px" />
+        <p class="oauth-button-text">Login With Google</p>
     </div>
+    <a routerLink="/auth/register">
+        Don't have an account ? register here
+    </a>
 </div>

@@ -1,17 +1,58 @@
-.auth-body {
-    background: linear-gradient(to right, white, 70%, #2f7ae5);
+.auth-parent {
+    background: linear-gradient(to right, transparent, 1%, white), url("/auth-background.jpg");
     height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1;
 
-    div.auth-line {
-        background-color: red !important;
-        height: 10px;
-        color: wheat;
+    .auth-body {
+        background: linear-gradient(to right, transparent, 70%, #2f7ae5);
+        height: 100vh;
+        z-index: 2;
+
+        .auth-content-container {
+            justify-self: flex-end;
+            display: flex;
+            justify-content: center;
+            flex: 1;
+            width: 50%;
+            height: 100vh;
+        }
+
+        :host-context(.auth-body) .auth-line-container {
+            display: flex;
+            width: 100%;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+
+            div {
+                color: white;
+            }
+
+            .auth-line {
+                width: 100%;
+                background-color: lightblue;
+                height: 2px;
+            }
+        }
     }
 
-    .auth-content-container {
-        justify-self: flex-end;
-        flex: 1;
-        width: 50%;
-        height: 100vh;
+    :host-context(.auth-body) {
+        p,
+        h1,
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .btn {
+            width: 100%;
+            background-color: #88e788;
+            border-color: #88e788;
+            color: white;
+        }
     }
 }

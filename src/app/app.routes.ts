@@ -6,6 +6,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { AboutComponent } from './pages/about/about.component';
 import { AuthComponent } from './pages/auth/auth.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
+import { ResetPasswordComponent } from './pages/auth/reset-password/reset-password.component';
+import { ChangePasswordComponent } from './pages/auth/change-password/change-password.component';
 
 export const routes: Routes = [
   {
@@ -23,6 +25,8 @@ export const routes: Routes = [
       { path: '', redirectTo: 'login', pathMatch: 'full' },
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
+      { path: 'reset-password', component: ResetPasswordComponent },
+      { path: 'change-password', component: ChangePasswordComponent },
     ],
   },
 ];

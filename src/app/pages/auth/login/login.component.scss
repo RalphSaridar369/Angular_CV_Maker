@@ -1,4 +1,4 @@
-@use "../auth.component.scss" as *;
+@import "../auth.component.scss";
 
 .login-body {
     display: flex;
@@ -18,13 +18,18 @@
     }
 
     .oauth-button {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
         background-color: white;
         border-radius: 10px;
         width: 100%;
         padding: 10px 10px;
+
+        .oauth-button-text {
+            color: black;
+            margin-left: 20px;
+        }
     }
 
     .oauth-button:hover {

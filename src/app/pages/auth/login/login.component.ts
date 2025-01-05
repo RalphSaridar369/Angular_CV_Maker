@@ -1,11 +1,11 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { GoogleApiService } from '../../../services/google-api.service';
 
 @Component({
   selector: 'app-login',
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
