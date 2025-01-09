@@ -24,6 +24,13 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {}
 
+  onSubmit() {
+    if (!this.loginForm.valid) {
+      console.log('first');
+    }
+    console.log(this.loginForm);
+  }
+
   login() {
     this.google.login();
   }

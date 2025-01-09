@@ -22,6 +22,13 @@ export class ChangePasswordComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder) {}
 
+  onSubmit() {
+    if (!this.changePasswordForm.valid) {
+      console.log('first');
+    }
+    console.log(this.changePasswordForm);
+  }
+
   ngOnInit(): void {
     this.changePasswordForm = this.formBuilder.group(
       {
