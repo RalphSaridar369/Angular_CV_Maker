@@ -22,4 +22,12 @@
         border-radius: 40px;
         padding: 40px 200px;
     }
+
+    .requirements-container {
+        display: flex;
+        color: white;
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }
