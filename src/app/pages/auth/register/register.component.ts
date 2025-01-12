@@ -10,10 +10,16 @@ import {
   Validators,
 } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { ErrorMessagesComponent } from '../../../components/error-messages/error-messages.component';
 
 @Component({
   selector: 'app-register',
-  imports: [RouterModule, CommonModule, ReactiveFormsModule],
+  imports: [
+    RouterModule,
+    CommonModule,
+    ReactiveFormsModule,
+    ErrorMessagesComponent,
+  ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
 })
@@ -23,22 +29,19 @@ export class RegisterComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
-    this.registerForm = this.formBuilder.group(
-      {
-        email: ['', [Validators.required, Validators.email]],
-        password: [
-          '',
-          [
-            Validators.required,
-            Validators.pattern(
-              /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{10,}$/
-            ),
-          ],
+    this.registerForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(
+            /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{10,}$/
+          ),
         ],
-        confirmPassword: ['', [Validators.required]],
-      },
-      { validators: this.passwordMatchValidator('password', 'confirmPassword') } // Apply the custom validator
-    );
+      ],
+      confirmPassword: ['', [Validators.required]],
+    });
   }
 
   onSubmit() {

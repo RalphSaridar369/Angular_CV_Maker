@@ -1,7 +1,11 @@
 <form class="login-body" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <h1>Login</h1>
     <input class="login-body-input" type='email' placeholder="email" formControlName="email" />
+    <app-error-messages class="error-message" style="color:red"
+        [control]="loginForm.get('email')!"></app-error-messages>
     <input class="login-body-input" type="password" placeholder="password" formControlName="password" />
+    <app-error-messages class="error-message" style="color:red"
+        [control]="loginForm.get('password')!"></app-error-messages>
 
     <button class="btn" type="submit">Login</button>
     <a routerLink="/auth/reset-password">

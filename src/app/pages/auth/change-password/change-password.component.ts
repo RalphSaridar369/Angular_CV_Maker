@@ -10,10 +10,16 @@ import {
   Validators,
 } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { ErrorMessagesComponent } from '../../../components/error-messages/error-messages.component';
 
 @Component({
   selector: 'app-change-password',
-  imports: [RouterModule, CommonModule, ReactiveFormsModule],
+  imports: [
+    RouterModule,
+    CommonModule,
+    ReactiveFormsModule,
+    ErrorMessagesComponent,
+  ],
   templateUrl: './change-password.component.html',
   styleUrl: './change-password.component.scss',
 })

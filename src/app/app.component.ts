@@ -11,7 +11,7 @@ import { GoogleApiService } from './services/google-api.service';
     OAuthService, // Add this line to register OAuthService
     GoogleApiService,
   ],
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {
   title = 'cv-maker';

@@ -1,7 +1,11 @@
 <form class="register-body" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <h1>Register</h1>
     <input class="register-body-input" type='email' placeholder="email" formControlName="email" />
+    <app-error-messages class="error-message" style="color:red"
+        [control]="registerForm.get('email')!"></app-error-messages>
     <input class="register-body-input" type="password" placeholder="password" formControlName="password" />
+    <app-error-messages class="error-message" style="color:red"
+        [control]="registerForm.get('password')!"></app-error-messages>
     <div class="requirements-container">
         <ul>
             <li>10 Characters Minimum length</li>
@@ -12,6 +16,8 @@
     </div>
     <input class="register-body-input" type="password" placeholder="confirm password"
         formControlName="confirmPassword" />
+    <app-error-messages class="error-message" style="color:red"
+        [control]="registerForm.get('confirmPassword')!"></app-error-messages>
     <button class="btn" type="submit">Register</button>
 
     <a routerLink="/auth/login">
