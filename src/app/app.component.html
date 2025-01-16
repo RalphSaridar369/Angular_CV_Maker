@@ -1,4 +1,10 @@
 <div class="content">
-  <div *ngIf="showHeader">h</div>
+  <div *ngIf="showHeader" class="header">
+    <h2>CV MAKER</h2>
+    <div class="header-content">
+      <div>Welcome back {{email}}!</div>
+      <div (click)="logout()" class="header-button">Logout</div>
+    </div>
+  </div>
   <router-outlet></router-outlet>
 </div>

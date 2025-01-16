@@ -31,7 +31,8 @@ export class LoginComponent implements OnInit {
     private _location: Location,
     private readonly google: GoogleApiService,
     private formBuilder: FormBuilder,
-    private store: Store
+    private store: Store,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -46,7 +47,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     if (!this.loginForm.valid) {
-      console.log('first');
+      return;
     }
     this.store.dispatch(
       login({ auth_user: { email: this.loginForm.get('email')?.value } })
@@ -62,6 +63,8 @@ export class LoginComponent implements OnInit {
     this.store.select(getUserAuth).subscribe((state) => {
       console.log('Current Counter State:', state);
     });
+
+    this.router.navigate(['']);
   }
 
   login() {
