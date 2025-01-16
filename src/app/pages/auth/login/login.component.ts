@@ -8,7 +8,10 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { Store } from '@ngrx/store';
 import { ErrorMessagesComponent } from '../../../components/error-messages/error-messages.component';
+import { getUserAuth } from '../../../states/auth/auth.selector';
+import { login, logout } from '../../../states/auth/auth.action';
 
 @Component({
   selector: 'app-login',
@@ -27,19 +30,9 @@ export class LoginComponent implements OnInit {
   constructor(
     private _location: Location,
     private readonly google: GoogleApiService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private store: Store
   ) {}
-
-  onSubmit() {
-    if (!this.loginForm.valid) {
-      console.log('first');
-    }
-    console.log(this.loginForm);
-  }
-
-  login() {
-    this.google.login();
-  }
 
   ngOnInit(): void {
     if (localStorage.getItem('user')) this._location.back();
@@ -49,5 +42,29 @@ export class LoginComponent implements OnInit {
         password: ['', [Validators.required, Validators.minLength(10)]],
       });
     }
+  }
+
+  onSubmit() {
+    if (!this.loginForm.valid) {
+      console.log('first');
+    }
+    this.store.dispatch(
+      login({ auth_user: { email: this.loginForm.get('email')?.value } })
+    );
+
+    sessionStorage.setItem(
+      'user_auth',
+      JSON.stringify({
+        email: this.loginForm.get('email')?.value,
+      })
+    );
+
+    this.store.select(getUserAuth).subscribe((state) => {
+      console.log('Current Counter State:', state);
+    });
+  }
+
+  login() {
+    this.google.login();
   }
 }
