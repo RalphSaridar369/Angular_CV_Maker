@@ -12,6 +12,7 @@ import { Store } from '@ngrx/store';
 import { ErrorMessagesComponent } from '../../../components/error-messages/error-messages.component';
 import { getUserAuth } from '../../../states/auth/auth.selector';
 import { login, logout } from '../../../states/auth/auth.action';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -32,7 +33,8 @@ export class LoginComponent implements OnInit {
     private readonly google: GoogleApiService,
     private formBuilder: FormBuilder,
     private store: Store,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -49,22 +51,7 @@ export class LoginComponent implements OnInit {
     if (!this.loginForm.valid) {
       return;
     }
-    this.store.dispatch(
-      login({ auth_user: { email: this.loginForm.get('email')?.value } })
-    );
-
-    sessionStorage.setItem(
-      'user_auth',
-      JSON.stringify({
-        email: this.loginForm.get('email')?.value,
-      })
-    );
-
-    this.store.select(getUserAuth).subscribe((state) => {
-      console.log('Current Counter State:', state);
-    });
-
-    this.router.navigate(['']);
+    this.authService.login(this.loginForm.get('email')?.value);
   }
 
   login() {

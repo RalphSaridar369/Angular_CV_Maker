@@ -6,10 +6,12 @@ import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { logout } from './states/auth/auth.action';
 import { filter } from 'rxjs';
+import { AuthService } from './services/auth.service';
+import { HeaderComponent } from './components/header/header.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule],
+  imports: [RouterOutlet, CommonModule, HeaderComponent],
   templateUrl: './app.component.html',
   providers: [
     OAuthService, // Add this line to register OAuthService
@@ -20,27 +22,21 @@ import { filter } from 'rxjs';
 export class AppComponent implements OnInit {
   showHeader: boolean = false; // Property to track header visibility
   title = 'cv-maker';
-  email = '';
+  authService: AuthService;
 
-  constructor(private store: Store, private router: Router) {}
-
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log('Changes:', changes);
+  constructor(
+    private store: Store,
+    private router: Router,
+    authService: AuthService
+  ) {
+    this.authService = authService;
   }
 
   ngOnInit(): void {
     if (sessionStorage.getItem('user_auth')) {
       this.showHeader = true;
-      const userAuth = sessionStorage.getItem('user_auth');
-      let data: any;
-
-      if (userAuth !== null) {
-        data = JSON.parse(userAuth);
-      }
-      this.email = data.email;
     }
 
-    // Dynamically update `showHeader` based on the current route
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((event: any) => {
@@ -49,11 +45,5 @@ export class AppComponent implements OnInit {
         // Hide header on specific routes, e.g., 'auth' route
         this.showHeader = !currentRoute.includes('/auth');
       });
-  }
-
-  logout() {
-    this.store.dispatch(logout({ auth_user: null }));
-    sessionStorage.removeItem('user_auth');
-    this.router.navigate(['auth']);
   }
 }
