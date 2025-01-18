@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { login } from '../states/auth/auth.action';
 import { getUserAuth } from '../states/auth/auth.selector';
 import { Router } from '@angular/router';
