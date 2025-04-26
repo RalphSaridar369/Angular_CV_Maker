@@ -1,0 +1,26 @@
+.add-cv-container {
+    padding: 80px 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .add-cv-left-container {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+
+        input {
+            background-color: white;
+            border-width: 1px;
+            border-radius: 10px;
+            padding: 10px 10px;
+            width: 100%;
+        }
+
+        .display-row {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+        }
+    }
+}

@@ -3,16 +3,16 @@
         <img src="/pdf.png" class="cv-item-img" />
         <div>{{cv.title}}</div>
     </div>
-    <div class="cv-item add-button">
+    <a class="cv-item add-button" routerLink="/cv/add">
         <img src="/plus.png" class="plus-icon" />
-    </div>
+    </a>
 </div>
 
 <ng-template #createCv>
     <div class="add-container center">
         <h2>Create a new CV</h2>
-        <div class="cv-item add-button">
+        <a class="cv-item add-button" routerLink="/cv/add">
             <img src="/plus.png" class="plus-icon" />
-        </div>
+        </a>
     </div>
 </ng-template>

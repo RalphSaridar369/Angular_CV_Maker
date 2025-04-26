@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Store } from '@ngrx/store';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { logout } from '../../states/auth/auth.action';
 
 @Component({
   selector: 'app-header',
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
